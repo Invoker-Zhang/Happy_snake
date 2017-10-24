@@ -8,12 +8,14 @@
 //class Pos
 class Pos{
 friend class Screen;
+friend class Snake;
 public:
 	Pos() = default;
 	Pos(unsigned r, unsigned c): row(r), col(c) {}
 	static const unsigned row_limit=24;
 	static const unsigned col_limit=40;
 	void print(){ std::cout << this->row << ':' << this->col; }
+	int is_equal_to(Pos another){ return (row == another.row && col == another.col) ? 1 : 0; }
 	Pos above(){ Pos tp = *this; tp.row = (tp.row + row_limit - 1) % row_limit; return tp; }
 	Pos left(){ Pos tp = *this; tp.col = (tp.col + col_limit - 1) % col_limit; return tp; }
 	Pos below(){ Pos tp = *this; tp.row = (tp.row + row_limit + 1) % row_limit; return tp; }
@@ -59,6 +61,7 @@ public:
 	void Write_to_screen(Screen&);
 	void Generate_food();
 private:
+	int is_crash(Pos next_head);
 	std::list<Pos> body;
 	char direction= ' ';
 	Food snake_food;

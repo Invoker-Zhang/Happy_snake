@@ -1,5 +1,7 @@
 #include "Happy_snake.h"
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 //class Pos
 //class Screen
@@ -48,6 +50,15 @@ int is_opsite(char dir , char origin_dir){
 		return 0;
 }
 
+//TO CUSTMISE
+int Snake::is_crash(Pos next_head){
+	auto beg = body.begin();
+	for(;beg != body.end(); beg++){
+		if(next_head.is_equal_to(*beg) )
+			return 1;
+	}
+	return 0;
+}
 
 Snake& Snake::move(char dir){
 	Pos next_head;
@@ -70,9 +81,17 @@ Snake& Snake::move(char dir){
 			break;
 	}
 	direction = dir;
-	body.push_front(next_head);
-	body.pop_back();
-	//TODO
+	if(next_head.is_equal_to(snake_food.pos)){
+		body.push_front(next_head);
+		Generate_food();
+	}
+	else if(is_crash(next_head)){
+		exit(0);
+	}
+	else{
+		body.push_front(next_head);
+		body.pop_back();
+	}
 	return *this;
 }
 
@@ -89,18 +108,40 @@ void Snake::Write_to_screen(Screen &screen){
 }
 
 void Snake::Generate_food(){
-	//TODO
+	srand((unsigned)time(NULL));
+	int randomnum = rand() % (Pos::row_limit * Pos::col_limit - body.size());
+	char tmp_contents[Pos::row_limit*Pos::col_limit]={' '};
+	for(auto beg=body.begin(); beg != body.end(); beg++){
+		tmp_contents[(*beg).row *Pos::col_limit+(*beg).col]='*';
+	}
+	for(int i=0; i < Pos::row_limit ; i++){
+		for(int j=0; j < Pos::col_limit; j++){
+			if(tmp_contents[i * Pos::col_limit + j] != '*'){
+				if(randomnum == 0){
+					snake_food.pos = Pos(i,j);
+				}
+				randomnum--;
+			}
+		}
+	}
+	//It has a chance of one in five to generate a food with a random value from 50 to 100.
+	if(rand() % 5 == 1){
+		snake_food.value = 50 + rand() % 50;
+		snake_food.type = '?';
+	}
 }
 
 
 
 int main(){
+	//TODO add the clock drive to move automatically
 	Screen screen;
 	Snake snake;
 	char dir=' ';
 	snake.Write_to_screen(screen);
 	screen.display();
-	while(std::cin >> dir){
+	while(1){
+		std::cin >> dir;
 		screen.clear();
 		snake.move(dir).Write_to_screen(screen);
 		screen.display();

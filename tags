@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Food	Happy_snake.h	/^class Food{$/;"	c
+Generate_food	Happy_snake.cpp	/^void Snake::Generate_food(){$/;"	f	class:Snake
+Pos	Happy_snake.h	/^	Pos(unsigned r, unsigned c): row(r), col(c) {}$/;"	f	class:Pos
+Pos	Happy_snake.h	/^class Pos{$/;"	c
+Screen	Happy_snake.cpp	/^Screen::Screen(){$/;"	f	class:Screen
+Screen	Happy_snake.h	/^class Screen{$/;"	c
+Snake	Happy_snake.h	/^Snake::Snake(){$/;"	f	class:Snake
+Snake	Happy_snake.h	/^class Snake{$/;"	c
+Write_to_screen	Happy_snake.cpp	/^void Snake::Write_to_screen(Screen &screen){$/;"	f	class:Snake
+__HAPPY_SNAKE_H__	Happy_snake.h	2;"	d
+above	Happy_snake.h	/^	Pos above(){ Pos tp = *this; tp.row = (tp.row + row_limit - 1) % row_limit; return tp; }$/;"	f	class:Pos
+below	Happy_snake.h	/^	Pos below(){ Pos tp = *this; tp.row = (tp.row + row_limit + 1) % row_limit; return tp; }$/;"	f	class:Pos
+body	Happy_snake.h	/^	std::list<Pos> body;$/;"	m	class:Snake
+check	Happy_snake.h	/^int Pos::check(){$/;"	f	class:Pos
+clear	Happy_snake.cpp	/^Screen& Screen::clear(){$/;"	f	class:Screen
+col	Happy_snake.h	/^	unsigned col=0;$/;"	m	class:Pos
+col_limit	Happy_snake.h	/^	static const unsigned col_limit = Pos::col_limit + 4;$/;"	m	class:Screen
+col_limit	Happy_snake.h	/^	static const unsigned col_limit=40;$/;"	m	class:Pos
+contents	Happy_snake.h	/^	std::array<char ,row_limit * col_limit> contents={{' '}} ;$/;"	m	class:Screen
+direction	Happy_snake.h	/^	char direction= ' ';$/;"	m	class:Snake
+display	Happy_snake.cpp	/^void Screen::display(){$/;"	f	class:Screen
+is_crash	Happy_snake.cpp	/^int Snake::is_crash(Pos next_head){$/;"	f	class:Snake
+is_equal_to	Happy_snake.h	/^	int is_equal_to(Pos another){ return (row == another.row && col == another.col) ? 1 : 0; }$/;"	f	class:Pos
+is_opsite	Happy_snake.cpp	/^int is_opsite(char dir , char origin_dir){$/;"	f
+left	Happy_snake.h	/^	Pos left(){ Pos tp = *this; tp.col = (tp.col + col_limit - 1) % col_limit; return tp; }$/;"	f	class:Pos
+main	Happy_snake.cpp	/^int main(){$/;"	f
+move	Happy_snake.cpp	/^Snake& Snake::move(char dir){$/;"	f	class:Snake
+pos	Happy_snake.h	/^	Pos pos;$/;"	m	class:Food
+print	Happy_snake.h	/^	void print(){ std::cout << this->row << ':' << this->col; }$/;"	f	class:Pos
+right	Happy_snake.h	/^	Pos right(){ Pos tp = *this; tp.col = (tp.col + col_limit + 1) % col_limit; return tp; }$/;"	f	class:Pos
+row	Happy_snake.h	/^	unsigned row=0;$/;"	m	class:Pos
+row_limit	Happy_snake.h	/^	static const unsigned row_limit = Pos::row_limit + 4;$/;"	m	class:Screen
+row_limit	Happy_snake.h	/^	static const unsigned row_limit=24;$/;"	m	class:Pos
+set	Happy_snake.cpp	/^Screen& Screen::set(Pos pos,char c){$/;"	f	class:Screen
+snake_food	Happy_snake.h	/^	Food snake_food;$/;"	m	class:Snake
+type	Happy_snake.h	/^	char type='$';$/;"	m	class:Food
+value	Happy_snake.h	/^	int value=10;$/;"	m	class:Food
